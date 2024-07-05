@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-color: #12012b;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+.content{
+    font-family: 'Press Start 2P', cursive;
+    line-height: 2rem;
+  }
