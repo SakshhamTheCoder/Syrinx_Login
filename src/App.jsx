@@ -2,6 +2,7 @@ import React from 'react';
 import HeroSection from './Components/HeroSection';
 import './index.css'
 import Registration from './Components/Registration';
+import RetroButton from './Components/RetroButton';
 const App = () => {
   
   return (
@@ -19,7 +20,11 @@ const App = () => {
       <div className="flex flex-col justify-center items-center gap-10 mt-10">
         WANT TO TRY THE GAME?
 
-        <button className="gaming-button">DEMO</button>
+        <RetroButton text="DEMO" />
+
+
+        
+        
       </div>
       <br />
       </div>

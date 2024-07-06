@@ -9,6 +9,8 @@ const HeroSection = () => {
   return (
     <div className="relative">
       <img src="./bg.jpg" className='cover' alt="" />
+          
+      
       <div className="absolute inset-0 flex items-center justify-center text-white text-4xl font-bold">
         <img src="./logos.png" className='w-[500px]' alt="" />
       </div>
