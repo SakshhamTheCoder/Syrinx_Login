@@ -24,8 +24,9 @@ const Registration = () => {
 
       {showJoinTeam && (
         <div className=" rounded flex flex-col gap-10 text-red-400">
-          <input type="text" className=' px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl ' placeholder="Enter Your Name" />
+          <input type="text" className=' px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl ' placeholder="Enter Your Username" />
           <input type="text" className=' px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl ' placeholder="Enter Your Email Id" />
+          <input type="text" className=' px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl ' placeholder="Enter Your Password" />
           <input type="text" className=' px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl ' placeholder="Enter Your Discord Id" />
           <input type="text" className=' px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl ' placeholder="Enter Team Code" />
 
@@ -38,6 +39,7 @@ const Registration = () => {
         <div className=" flex flex-col gap-10 text-red-400">
           <input type="text" className=' px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl ' placeholder="Enter Your Name" />
           <input type="text" className=' px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl ' placeholder="Enter Your Email Id" />
+          <input type="text" className=' px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl ' placeholder="Enter Your Password" />
           <input type="text" className=' px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl ' placeholder="Enter Your Discord Id" />
           <GamingButton text='Back'
             className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-2"
