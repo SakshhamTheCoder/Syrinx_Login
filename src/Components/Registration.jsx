@@ -36,6 +36,7 @@ const Registration = () => {
       )}
 
       {showCreateTeam && (
+        
         <div className=" flex flex-col gap-10 text-red-400">
           <input type="text" className=' px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl ' placeholder="Enter Your Name" />
           <input type="text" className=' px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl ' placeholder="Enter Your Email Id" />
