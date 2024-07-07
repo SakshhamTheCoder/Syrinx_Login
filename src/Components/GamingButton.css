@@ -1,27 +1,35 @@
 .gaming-button {
-    font-family: 'Press Start 2P', cursive;
-    background-color: #1e1e1e;
-    color: #ffffff;
-    border: 2px solid #00ff00;
-    font-size: 20px;
-    border-radius: 5px;
-    padding: 20px 60px;
-    cursor: pointer;
-    text-shadow: 2px 2px #c800ff, 4px 4px #0000ff;
-    transition: all 0.3s ease-in-out;
+  font-family: 'Press Start 2P', cursive;
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border: 2px solid #00ff00;
+  font-size: 18px;
+  border-radius: 5px;
+  padding: 20px 40px; /* Keep the padding as needed */
+  cursor: pointer;
+  text-shadow: 2px 2px #c800ff, 4px 4px #0000ff;
+  transition: all 0.3s ease-in-out;
+}
+@media screen and (max-width: 767px) {
+  .gaming-button {
+    font-size: 12px; /* Adjusted for better readability on smaller screens */
+    padding: 10px 8px; /* Keep the padding as needed */
   }
-  
-  .gaming-button:hover {
-    background-color: #00ff00;
-    color: #1e1e1e;
-  }
-  
-  .gaming-button:active {
-    box-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
-    transform: scale(0.95);
-  }
-  
 
-  .content{
-    font-family: 'Press Start 2P', cursive;
-  }
+
+  
+}
+.gaming-button:hover {
+  background-color: #00ff00;
+  color: #1e1e1e;
+}
+
+.gaming-button:active {
+  box-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
+  transform: scale(0.95);
+}
+
+
+.content{
+  font-family: 'Press Start 2P', cursive;
+}

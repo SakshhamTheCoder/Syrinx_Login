@@ -7,12 +7,11 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="relative">
-      <img src="./bg.jpg" className='cover'  alt="" />
-          
-      
-      <div className="absolute inset-0 flex items-center justify-center text-white text-4xl font-bold">
-        <img src="./logos.png" className='w-[500px]' alt="" />
+    <div className="relative h-screen">
+      <img src="./bg.jpg" className="w-full h-full object-cover" alt="" />
+
+      <div className="absolute inset-0 flex items-center justify-center text-white text-center">
+        <img src="./logos.png" className="w-4/5 max-w-lg md:w-2/5 lg:w-3/4" alt="" />
       </div>
     </div>
   );
