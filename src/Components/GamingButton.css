@@ -13,7 +13,7 @@
 @media screen and (max-width: 767px) {
   .gaming-button {
     font-size: 12px; /* Adjusted for better readability on smaller screens */
-    padding: 10px 8px; /* Keep the padding as needed */
+    padding: 10px 10px; /* Keep the padding as needed */
   }
 
 

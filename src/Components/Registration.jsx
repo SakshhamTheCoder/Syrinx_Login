@@ -72,7 +72,7 @@ function Registration() {
   }
 
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center min-h-screen">
       {!showJoinTeam && !showCreateTeam && (
         <div className="flex flex-col gap-10">
           <div className="flex gap-10">
@@ -84,7 +84,7 @@ function Registration() {
       )}
 
       {showJoinTeam && (
-        <form onSubmit={handleSubmit} className="flex flex-col gap-10 text-red-400">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5 items-center text-red-400">
           <GamingButton
             text="Back"
             onClick={() => setShowJoinTeam(false)}
@@ -96,7 +96,7 @@ function Registration() {
             minLength={3}
             value={formData.Username}
             onChange={handleChange}
-            className="px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl"
+            className="px-5 py-2 bg-inherit border-2 border-pink-600 rounded-xl w-full md:w-[400px]"
             placeholder="Enter Your Username"
           />
           <input
@@ -104,7 +104,7 @@ function Registration() {
             name="Email"
             value={formData.Email}
             onChange={handleChange}
-            className="px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl"
+            className="px-5 py-2 bg-inherit border-2 border-pink-600 rounded-xl w-full md:w-[400px]"
             placeholder="Enter Your Email Id"
           />
           <input
@@ -113,7 +113,7 @@ function Registration() {
             minLength={8}
             value={formData.Password}
             onChange={handleChange}
-            className="px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl"
+            className="px-5 py-2 bg-inherit border-2 border-pink-600 rounded-xl w-full md:w-[400px]"
             placeholder="Enter Your Password"
           />
           <input
@@ -121,7 +121,7 @@ function Registration() {
             name="DiscordID"
             value={formData.DiscordID}
             onChange={handleChange}
-            className="px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl"
+            className="px-5 py-2 bg-inherit border-2 border-pink-600 rounded-xl w-full md:w-[400px]"
             placeholder="Enter Your Discord Id"
           />
           <input
@@ -131,7 +131,7 @@ function Registration() {
             maxLength={6}
             value={formData.TeamID}
             onChange={handleChange}
-            className="px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl"
+            className="px-5 py-2 bg-inherit border-2 border-pink-600 rounded-xl w-full md:w-[400px]"
             placeholder="Enter Team Code"
           />
           <GamingButton text="Submit" type="submit" />
@@ -139,7 +139,7 @@ function Registration() {
       )}
 
       {showCreateTeam && (
-        <form onSubmit={handleSubmit} className="flex flex-col gap-10 text-red-400">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5 items-center text-red-400">
           <GamingButton
             text="Back"
             onClick={() => setShowCreateTeam(false)}
@@ -151,7 +151,7 @@ function Registration() {
             minLength={3}
             value={formData.Username}
             onChange={handleChange}
-            className="px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl"
+            className="px-5 py-2 bg-inherit border-2 border-pink-600 rounded-xl w-full md:w-[400px]"
             placeholder="Enter Your Name"
           />
           <input
@@ -159,7 +159,7 @@ function Registration() {
             name="Email"
             value={formData.Email}
             onChange={handleChange}
-            className="px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl"
+            className="px-5 py-2 bg-inherit border-2 border-pink-600 rounded-xl w-full md:w-[400px]"
             placeholder="Enter Your Email Id"
           />
           <input
@@ -168,7 +168,7 @@ function Registration() {
             minLength={8}
             value={formData.Password}
             onChange={handleChange}
-            className="px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl"
+            className="px-5 py-2 bg-inherit border-2 border-pink-600 rounded-xl w-full md:w-[400px]"
             placeholder="Enter Your Password"
           />
           <input
@@ -176,7 +176,7 @@ function Registration() {
             name="DiscordID"
             value={formData.DiscordID}
             onChange={handleChange}
-            className="px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl"
+            className="px-5 py-2 bg-inherit border-2 border-pink-600 rounded-xl w-full md:w-[400px]"
             placeholder="Enter Your Discord Id"
           />
           {/*<div className="px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl">
