@@ -72,7 +72,7 @@ function Registration() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
+    <div id='Register' className=" Register flex flex-col items-center justify-center min-h-screen">
       {!showJoinTeam && !showCreateTeam && (
         <div className="flex flex-col gap-10">
           <div className="flex gap-10">

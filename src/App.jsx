@@ -3,17 +3,17 @@ import HeroSection from './Components/HeroSection';
 import Registration from './Components/Registration';
 import RetroButton from './Components/RetroButton';
 import TypewriterText from './Components/TypewriterText';
-import Navbar from './Components/Navbar';
 
 const App = () => {
   return (
     <>
-    <Navbar />
     <div className="min-h-screen flex flex-col justify-center items-center">
       {/* Hero Section */}
       <div className="w-full">
         <HeroSection />
+        
       </div>
+
 
       {/* Main Content */}
       <div className=" content w-full px-4 lg:px-8 py-8 lg:py-16 max-w-screen-xl mx-auto">
@@ -30,7 +30,7 @@ const App = () => {
       </div>
 
       {/* Registration Section */}
-      <div className="w-30px" style={{ height: '70vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <div className="w-30px" style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <Registration />
       </div>
     </div>
