@@ -17,6 +17,10 @@ const Registration = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const generateRandomTeamCode = () => {
+    return Math.floor(100000 + Math.random() * 900000).toString();
+  };
+
   async function sendData(data) {
     const response = await fetch('/signup', {
       method: 'POST',
@@ -36,9 +40,15 @@ const Registration = () => {
 
   async function handleSubmit(event) {
     event.preventDefault();
+
+    if (showCreateTeam) {
+      const teamCode = generateRandomTeamCode();
+      setFormData({ ...formData, teamCode });
+    }
+
     try {
       const data = await sendData(formData);
-      console.log(data) // TODO: set this as a cookie
+      console.log(data); // TODO: set this as a cookie
       alert('User registered successfully!');
     } catch (e) {
       console.error(e);
@@ -68,13 +78,14 @@ const Registration = () => {
           <input
             type="text"
             name="username"
+            minLength={8}
             value={formData.username}
             onChange={handleChange}
             className="px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl"
             placeholder="Enter Your Username"
           />
           <input
-            type="text"
+            type="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
@@ -84,6 +95,7 @@ const Registration = () => {
           <input
             type="password"
             name="password"
+            minLength={8}
             value={formData.password}
             onChange={handleChange}
             className="px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl"
@@ -98,8 +110,10 @@ const Registration = () => {
             placeholder="Enter Your Discord Id"
           />
           <input
-            type="text"
+            type="tel"
             name="teamCode"
+            minLength={6}
+            maxLength={6}
             value={formData.teamCode}
             onChange={handleChange}
             className="px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl"
@@ -119,13 +133,14 @@ const Registration = () => {
           <input
             type="text"
             name="username"
+            minLength={8}
             value={formData.username}
             onChange={handleChange}
             className="px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl"
             placeholder="Enter Your Name"
           />
           <input
-            type="text"
+            type="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
@@ -135,6 +150,7 @@ const Registration = () => {
           <input
             type="password"
             name="password"
+            minLength={8}
             value={formData.password}
             onChange={handleChange}
             className="px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl"
@@ -149,7 +165,7 @@ const Registration = () => {
             placeholder="Enter Your Discord Id"
           />
           <div className="px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl">
-            TEAM CODE: 1231231
+            TEAM CODE: {formData.teamCode}
           </div>
           <GamingButton text="Submit" type="submit" />
         </form>
