@@ -34,10 +34,11 @@ function Registration() {
     let tosend = undefined
     const tid = data.TeamID;
     if (tid) { 
+      console.log(tid)
       data.TeamID = stringToHex(tid);
       tosend = JSON.stringify(data);
       data.TeamID = tid;
-    } else { tosend = JSON.stringify(data); }
+    } else { data.TeamID = undefined; tosend = JSON.stringify(data); }
     const response = await fetch('/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
