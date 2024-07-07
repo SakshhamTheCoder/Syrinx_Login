@@ -1,54 +1,63 @@
 import { useState } from 'react';
 import GamingButton from './GamingButton';
 
-const Registration = () => {
+
+function hexToString(data) {
+  return data.map((byte) => byte.toString(16).padStart(2, "0")).join("");
+}
+
+function stringToHex(str) {
+  const bytes = new Array(str.length / 2);
+  for (let i = 0; i < str.length; i += 2) {
+    bytes[i / 2] = parseInt(str.slice(i, i + 2), 16);
+  }
+  return bytes;
+}
+
+function Registration() {
   const [showCreateTeam, setShowCreateTeam] = useState(false);
   const [showJoinTeam, setShowJoinTeam] = useState(false);
 
   const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    discordId: '',
-    teamCode: '',
+    Username: '',
+    Email: '',
+    Password: '',
+    DiscordID: '',
+    TeamID: '',
   });
 
-  const handleChange = (e) => {
+  function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const generateRandomTeamCode = () => {
-    return Math.floor(100000 + Math.random() * 900000).toString();
-  };
+  }
 
   async function sendData(data) {
+    if (data.TeamID != "") { data.TeamID = stringToHex(data.TeamID); }
+    else { data.TeamID = undefined; }
     const response = await fetch('/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     });
 
+    const json =  await response.json()
+    if (!json) { throw new Error(`An error occurred while parsing server's response`); }
+
     if (!response.ok) {
       console.log(response)
-      const json =  await response.json()
-      if (!json) { throw new Error(`An error occurred while parsing server response`); }
       throw new Error(`${json.error}`);
     }
-
-    return await response.json()
+    const {TeamID, SessionID} = json
+    if (!TeamID || !SessionID) { throw new Error(`Server's response did not include valid fields`); }
+    return [hexToString(TeamID), SessionID]
   }
 
   async function handleSubmit(event) {
     event.preventDefault();
 
-    if (showCreateTeam) {
-      const teamCode = generateRandomTeamCode();
-      setFormData({ ...formData, teamCode });
-    }
-
     try {
-      const data = await sendData(formData);
-      console.log(data); // TODO: set this as a cookie
+      // FIXME: set SessionID as a cookie
+      const [TeamID, SessionID] = await sendData(formData);
+      console.log(TeamID, SessionID);
       alert('User registered successfully!');
     } catch (e) {
       console.error(e);
@@ -77,17 +86,17 @@ const Registration = () => {
           />
           <input
             type="text"
-            name="username"
-            minLength={8}
-            value={formData.username}
+            name="Username"
+            minLength={3}
+            value={formData.Username}
             onChange={handleChange}
             className="px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl"
             placeholder="Enter Your Username"
           />
           <input
             type="email"
-            name="email"
-            value={formData.email}
+            name="Email"
+            value={formData.Email}
             onChange={handleChange}
             className="px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl"
             placeholder="Enter Your Email Id"
@@ -96,25 +105,25 @@ const Registration = () => {
             type="password"
             name="password"
             minLength={8}
-            value={formData.password}
+            value={formData.Password}
             onChange={handleChange}
             className="px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl"
             placeholder="Enter Your Password"
           />
           <input
             type="text"
-            name="discordId"
-            value={formData.discordId}
+            name="DiscordID"
+            value={formData.DiscordID}
             onChange={handleChange}
             className="px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl"
             placeholder="Enter Your Discord Id"
           />
           <input
             type="tel"
-            name="teamCode"
+            name="TeamID"
             minLength={6}
             maxLength={6}
-            value={formData.teamCode}
+            value={formData.TeamID}
             onChange={handleChange}
             className="px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl"
             placeholder="Enter Team Code"
@@ -132,46 +141,46 @@ const Registration = () => {
           />
           <input
             type="text"
-            name="username"
-            minLength={8}
-            value={formData.username}
+            name="Username"
+            minLength={3}
+            value={formData.Username}
             onChange={handleChange}
             className="px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl"
             placeholder="Enter Your Name"
           />
           <input
             type="email"
-            name="email"
-            value={formData.email}
+            name="Email"
+            value={formData.Email}
             onChange={handleChange}
             className="px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl"
             placeholder="Enter Your Email Id"
           />
           <input
             type="password"
-            name="password"
+            name="Password"
             minLength={8}
-            value={formData.password}
+            value={formData.Password}
             onChange={handleChange}
             className="px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl"
             placeholder="Enter Your Password"
           />
           <input
             type="text"
-            name="discordId"
-            value={formData.discordId}
+            name="DiscordID"
+            value={formData.DiscordID}
             onChange={handleChange}
             className="px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl"
             placeholder="Enter Your Discord Id"
           />
-          <div className="px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl">
+          {/*<div className="px-5 w-[400px] py-2 bg-inherit border-2 border-pink-600 rounded-xl">
             TEAM CODE: {formData.teamCode}
-          </div>
+          </div>*/}
           <GamingButton text="Submit" type="submit" />
         </form>
       )}
     </div>
   );
-};
+}
 
 export default Registration;
