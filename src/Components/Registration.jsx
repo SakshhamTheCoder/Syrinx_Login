@@ -31,12 +31,17 @@ function Registration() {
   }
 
   async function sendData(data) {
-    if (data.TeamID != "") { data.TeamID = stringToHex(data.TeamID); }
-    else { data.TeamID = undefined; }
+    let tosend = undefined
+    const tid = data.TeamID;
+    if (tid) { 
+      data.TeamID = stringToHex(tid);
+      tosend = JSON.stringify(data);
+      data.TeamID = tid;
+    } else { tosend = JSON.stringify(data); }
     const response = await fetch('/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
+      body: tosend
     });
 
     const json =  await response.json()
