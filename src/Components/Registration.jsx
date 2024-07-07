@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import GamingButton from './GamingButton';
 
 const Registration = () => {
@@ -17,16 +17,34 @@ const Registration = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (event) => {
+  async function sendData(data) {
+    const response = await fetch('/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
+    if (!response.ok) {
+      console.log(response)
+      const json =  await response.json()
+      if (!json) { throw new Error(`An error occurred while parsing server response`); }
+      throw new Error(`${json.error}`);
+    }
+
+    return await response.json()
+  }
+
+  async function handleSubmit(event) {
     event.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/register', formData);
-      alert('User registered successfully');
-    } catch (error) {
-      console.error('Error registering user:', error);
-      alert('Failed to register user');
+      const data = await sendData(formData);
+      console.log(data) // TODO: set this as a cookie
+      alert('User registered successfully!');
+    } catch (e) {
+      console.error(e);
+      alert('Failed to register!\n' + e.message);
     }
-  };
+  }
 
   return (
     <div>
