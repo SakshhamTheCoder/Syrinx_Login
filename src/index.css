@@ -13,9 +13,27 @@ body {
     font-family: 'Press Start 2P', cursive;
     line-height: 2rem;
   }
+  .navcontent{
+    font-family: 'Press Start 2P',cursive;
+    font-size: 10px;
+  }
+
 
   ::-webkit-scrollbar{
     width: 0px;
   }
 
+  
+  .parallax-bg > div {
+    background-position: center center !important;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .parallax-bg > div {
+      background-position: center center !important;
+    }
+    .navcontent{
+      font-size: 8px;
+    }
+  }
   
