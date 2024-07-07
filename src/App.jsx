@@ -3,9 +3,12 @@ import HeroSection from './Components/HeroSection';
 import Registration from './Components/Registration';
 import RetroButton from './Components/RetroButton';
 import TypewriterText from './Components/TypewriterText';
+import Navbar from './Components/Navbar';
 
 const App = () => {
   return (
+    <>
+    <Navbar />
     <div className="min-h-screen flex flex-col justify-center items-center">
       {/* Hero Section */}
       <div className="w-full">
@@ -31,6 +34,7 @@ const App = () => {
         <Registration />
       </div>
     </div>
+    </>
   );
 };
 

@@ -13,3 +13,7 @@ body {
     font-family: 'Press Start 2P', cursive;
     line-height: 2rem;
   }
+
+  ::-webkit-scrollbar{
+    width: 0px;
+  }
