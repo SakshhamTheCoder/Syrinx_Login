@@ -1,169 +1,4 @@
-// import { useState, useEffect, useRef } from 'react';
-// import { gsap } from 'gsap';
-// import GamingButton from './GamingButton';
-// import Cookies from 'js-cookie';
-// import './reg.css';
-
-// function hexToString(data) {
-//   return data.map((byte) => byte.toString(16).padStart(2, "0")).join("");
-// }
-
-// function stringToHex(str) {
-//   const bytes = new Array(str.length / 2);
-//   for (let i = 0; i < str.length; i += 2) {
-//     bytes[i / 2] = parseInt(str.slice(i, i + 2), 16);
-//   }
-//   return bytes;
-// }
-
-
-
-
-// function Registration() {
-//   const [showCreateTeam, setShowCreateTeam] = useState(false);
-//   const [showJoinTeam, setShowJoinTeam] = useState(false);
-//   const formRef = useRef(null);
-//   const [formData, setFormData] = useState({
-//     Username: '',
-//     Email: '',
-//     Password: '',
-//     DiscordID: '',
-//     TeamID: '',
-//   });
-
-//   useEffect(() => {
-//     gsap.fromTo(
-//       formRef.current,
-//       { opacity: 0, y: -50 },
-//       { opacity: 1, y: 0, duration: 1, ease: 'bounce.out' }
-//     );
-//   }, [showCreateTeam, showJoinTeam]);
-
-//   function handleChange(e) {
-//     setFormData({ ...formData, [e.target.name]: e.target.value });
-//   }
-
-//   async function sendData(data) {
-//     let tosend = undefined;
-//     const tid = data.TeamID;
-//     if (tid) {
-//       data.TeamID = stringToHex(tid);
-//       tosend = JSON.stringify(data);
-//       data.TeamID = tid;
-//     } else {
-//       data.TeamID = undefined;
-//       tosend = JSON.stringify(data);
-//     }
-//     const response = await fetch('/signup', {
-//       method: 'POST',
-//       headers: { 'Content-Type': 'application/json' },
-//       body: tosend,
-//     });
-
-//     const json = await response.json();
-//     if (!json) {
-//       throw new Error(`An error occurred while parsing server's response`);
-//     }
-
-//     if (!response.ok) {
-//       throw new Error(`${json.error}`);
-//     }
-//     const { TeamID, SessionID } = json;
-//     if (!TeamID || !SessionID) {
-//       throw new Error(`Server's response did not include valid fields`);
-//     }
-//     return [hexToString(TeamID), SessionID];
-//   }
-
-//   async function handleSubmit(event) {
-//     event.preventDefault();
-
-//     try {
-//       const [TeamID, SessionID] = await sendData(formData);
-//       console.log(TeamID, SessionID);
-//       Cookies.set('SessionID', SessionID, { expires: 1, secure: true });
-//       alert('User registered successfully!');
-//     } catch (e) {
-//       alert('Failed to register!\n' + e.message);
-//     }
-//   }
-
-//   return (
-//     <div id="Register" className="register flex flex-col items-center">
-
-//       {!showJoinTeam && !showCreateTeam && (
-//         <div className="flex flex-col gap-10" ref={formRef}>
-//           <div className="flex gap-10">
-//             <GamingButton text="Join Team" onClick={() => setShowJoinTeam(true)} />
-//             <GamingButton text="Create Team" onClick={() => setShowCreateTeam(true)} />
-//           </div>
-//           <GamingButton text="Demo" />
-//         </div>
-//       )}
-
-//       {(showJoinTeam || showCreateTeam) && (
-//         <form onSubmit={handleSubmit} className="flex flex-col gap-5 items-center text-red-400" ref={formRef}>
-//           <GamingButton
-//             text="Back"
-//             onClick={() => { setShowJoinTeam(false); setShowCreateTeam(false); }}
-//             className="self-start"
-//           />
-//           <input
-//             type="text"
-//             name="Username"
-//             minLength={3}
-//             value={formData.Username}
-//             onChange={handleChange}
-//             className="input-field"
-//             placeholder="Enter Your Username"
-//           />
-//           <input
-//             type="email"
-//             name="Email"
-//             value={formData.Email}
-//             onChange={handleChange}
-//             className="input-field"
-//             placeholder="Enter Your Email Id"
-//           />
-//           <input
-//             type="password"
-//             name="Password"
-//             minLength={8}
-//             value={formData.Password}
-//             onChange={handleChange}
-//             className="input-field"
-//             placeholder="Enter Your Password"
-//           />
-//           <input
-//             type="text"
-//             name="DiscordID"
-//             value={formData.DiscordID}
-//             onChange={handleChange}
-//             className="input-field"
-//             placeholder="Enter Your Discord Id"
-//           />
-//           {showJoinTeam && (
-//             <input
-//               type="tel"
-//               name="TeamID"
-//               minLength={6}
-//               maxLength={6}
-//               value={formData.TeamID}
-//               onChange={handleChange}
-//               className="input-field"
-//               placeholder="Enter Team Code"
-//             />
-//           )}
-//           <GamingButton text="Submit" type="submit" />
-//         </form>
-//       )}
-//     </div>
-//   );
-// }
-
-// export default Registration;
-
-
+'use strict';
 import { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import GamingButton from './GamingButton';
@@ -247,13 +82,14 @@ function Registration() {
     let tosend = undefined;
     const tid = data.TeamID;
     if (tid) {
-      data.TeamID = stringToHex(tid);
+      const hexed = stringToHex(tid)
+      data.TeamID = hexed;
       tosend = JSON.stringify(data);
-      data.TeamID = tid;
     } else {
       data.TeamID = undefined;
       tosend = JSON.stringify(data);
     }
+    data.TeamID = tid;
     const response = await fetch('/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -368,11 +204,11 @@ function Registration() {
               {formErrors.TeamID && <p className="error-message">{formErrors.TeamID}</p>}
             </>
           )}
-                <GamingButton text="Submit" type="submit" className="gaming-button" />
-    </form>
-  )}
-</div>
-);
+          <GamingButton text="Submit" type="submit" className="gaming-button" />
+        </form>
+      )}
+    </div>
+  );
 }
 
 export default Registration;
