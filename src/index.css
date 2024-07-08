@@ -53,18 +53,4 @@
    
    /* Custom scrollbar for retro feel */
    ::-webkit-scrollbar {
-     width: 10px;
-   }
-   
-   ::-webkit-scrollbar-track {
-     background: #000;
-   }
-   
-   ::-webkit-scrollbar-thumb {
-     background: #00ff00;
-     border: 2px solid #000;
-   }
-   
-   ::-webkit-scrollbar-thumb:hover {
-     background: #00cc00;
-   }
+     width: 0px;}

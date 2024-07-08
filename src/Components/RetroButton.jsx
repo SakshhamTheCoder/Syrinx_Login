@@ -6,15 +6,15 @@ const RetroButton = ({ onClick, text }) => {
     <button
       onClick={onClick}
       className="
-        bg-green-500 
-        hover:bg-green-700 
+        bg-purple-600 
+        hover:bg-purple-500
         text-white 
         font-bold 
         py-3 
         px-20 
         rounded 
         border-4 
-        border-yellow-500 
+        border-white
         hover:border-yellow-700 
         shadow-lg 
         transform 

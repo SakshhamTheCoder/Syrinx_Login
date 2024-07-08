@@ -40,3 +40,26 @@
     height: 100%;
     z-index: -1;
   }
+ a{
+  background-color: #9a39fc; /* Accessible blue color */
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    justify-content: center;
+    align-items: center;
+ }
+
+ .gaming-but {
+  background-color: #9a39fc; /* Accessible blue color */
+    color: #ffffff;
+    padding: 10px 20px;
+    display: flex;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+ }

@@ -152,13 +152,13 @@ export default function Home() {
                your own life."
             />
           </div>
-          <div className="flex flex-col items-center mt-8 lg:mt-12 random-flicker">
+          {/* <div className="flex flex-col items-center mt-8 lg:mt-12 random-flicker">
             <p className="text-center text-sm lg:text-xl mb-5 mt-10">WANT TO TRY THE GAME?</p>
             <RetroButton text="DEMO" />
-          </div>
+          </div> */}
         </div>
         {/* Registration Section */}
-        <div className="w-30px random-flicker" style={{height:'60vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <div className="w-30px random-flicker" style={{height:'90vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <Registration />
         </div>
       </div>

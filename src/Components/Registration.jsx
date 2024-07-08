@@ -140,7 +140,7 @@ function Registration() {
             <GamingButton text="Join Team" onClick={() => setShowJoinTeam(true)} className="gaming-button" />
             <GamingButton text="Create Team" onClick={() => setShowCreateTeam(true)} className="gaming-button" />
           </div>
-          <GamingButton text="Demo" className="gaming-button"/>
+          <a href="https://gadot-one.vercel.app/"><GamingButton text="Demo" className="gaming-but"  /></a>
         </div>
       )}
 

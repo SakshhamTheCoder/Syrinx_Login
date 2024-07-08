@@ -49,8 +49,8 @@ body {
 }
 
 .crt-content {
-  color: #33ff33;
-  text-shadow: 0 0 2px #33ff33;
+  color: white;
+  text-shadow: 0 0 4px #d633ff;
 }
 
 @keyframes flicker {
@@ -308,4 +308,8 @@ body {
     100% {
       clip: rect(99px, 9999px, 73px, 0);
     }
+  }
+
+  ::-webkit-scrollbar{
+    width: 0px;
   }
