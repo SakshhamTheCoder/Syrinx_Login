@@ -31,7 +31,7 @@ export default function Home(){
       </div>
 
       {/* Registration Section */}
-      <div className="w-30px" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <div className="w-30px" style={{height:'60vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <Registration />
       </div>
     </div>

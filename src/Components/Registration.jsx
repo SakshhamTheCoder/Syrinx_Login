@@ -298,7 +298,8 @@ function Registration() {
     <div id="Register" className="register flex flex-col items-center justify-center">
       <div ref={pixiRef} className="coin-animation"></div>
       {!showJoinTeam && !showCreateTeam && (
-        <div className="flex flex-col gap-10" ref={formRef}>
+        <div className="flex flex-col gap-10 " ref={formRef}>
+          <h1 className='w-full text-center text-2xl content '>Register Here</h1>
           <div className="flex gap-10">
             <GamingButton text="Join Team" onClick={() => setShowJoinTeam(true)} className="gaming-button" />
             <GamingButton text="Create Team" onClick={() => setShowCreateTeam(true)} className="gaming-button" />

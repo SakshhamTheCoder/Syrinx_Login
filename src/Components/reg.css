@@ -6,7 +6,7 @@
     font-size: 14px;
     padding: 10px;
     background: #1e1e1e;
-    border: 2px solid #1e90ff;
+    border: 2px solid #9a39fc;
     border-radius: 4px;
     color: #1e90ff;
     outline: none;
@@ -19,7 +19,7 @@
   }
   
   .gaming-button {
-    background-color: #1e90ff; /* Accessible blue color */
+    background-color: #9a39fc; /* Accessible blue color */
     color: #ffffff;
     padding: 10px 20px;
     border: none;
@@ -29,7 +29,7 @@
   }
   
   .gaming-button:hover {
-    background-color: #1c7ed6; /* Slightly darker blue for hover state */
+    background-color: #7208dc; /* Slightly darker blue for hover state */
   }
 
   .coin-animation {
